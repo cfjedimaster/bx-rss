@@ -1,0 +1,40 @@
+import com.apptasticsoftware.rssreader.RssReader;
+
+@BoxBIF
+class {
+
+    function invoke(urls) {
+	
+		if(isSimpleValue(urls)) urls = [urls];
+
+		rssOb = createObject('java', 'com.apptasticsoftware.rssreader.RssReader');
+
+		items = rssOb.read(urls).sorted().toList();
+
+		return items.map(i => {
+			result = {
+				title:'',
+				content:'',
+				pubdate:'',
+				link:''
+			}
+
+			i.getTitle().ifPresent(t => result.title = t);
+			i.getLink().ifPresent(l => result.link = l);
+			i.getContent().ifPresent(c => result.content = c);
+			i.getDescription().ifPresent(c => {
+				/*
+				 So, some feeds had content, some had this. I think it is safe
+				 to say that if this exists and content is blank, just overwrite.
+				*/
+				if(result.content == '') result.content = c;
+			})
+			i.getPubDateZonedDateTime().ifPresent(d => {
+				result.pubdate = parseDateTime(d);
+			});
+			return result;
+		});
+
+    }
+
+}

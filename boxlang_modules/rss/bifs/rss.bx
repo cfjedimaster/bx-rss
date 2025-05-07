@@ -3,13 +3,15 @@ import com.apptasticsoftware.rssreader.RssReader;
 @BoxBIF
 class {
 
+	function init() {
+		variables.rssOb = createObject('java', 'com.apptasticsoftware.rssreader.RssReader');
+	}
+
     function invoke(urls) {
 	
 		if(isSimpleValue(urls)) urls = [urls];
 
-		rssOb = createObject('java', 'com.apptasticsoftware.rssreader.RssReader');
-
-		items = rssOb.read(urls).sorted().toList();
+		items = variables.rssOb.read(urls).sorted().toList();
 
 		return items.map(i => {
 			result = {

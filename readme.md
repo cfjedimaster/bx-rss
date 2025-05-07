@@ -9,8 +9,11 @@ The `rss` function takes one argument, either a URL, or an array of URL.
 items = rss('https://www.raymondcamden.com/feed_slim.xml');
 
 // or
-items = rss(['https://www.raymondcamden.com/feed_slim.xml','https://2ality.com/feeds/posts.atom']);
+items = rss(['https://www.raymondcamden.com/feed_slim.xml', 'https://2ality.com/feeds/posts.atom']);
 ```
 
 It returns an array of feed items consisting of the keys: `title`, `content`, `pubdate`, `link`. If you pass an array of RSS urls, the items are automatically sorted and merged together by date.
 
+## Release History
+
+May 5, 2025: Moved the creation of the RSS object to the `init` method.

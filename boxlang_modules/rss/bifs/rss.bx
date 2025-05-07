@@ -4,7 +4,7 @@ import com.apptasticsoftware.rssreader.RssReader;
 class {
 
 	function init() {
-		variables.rssOb = createObject('java', 'com.apptasticsoftware.rssreader.RssReader');
+		variables.rssOb = new RssReader();
 	}
 
     function invoke(urls) {

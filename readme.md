@@ -1,9 +1,8 @@
-# bx-rss
+# ⚡︎ RSS
 
-I built this after learning about BoxLang modules a whole hour ago so take with a Titanic-sized piece of salt. I'll add
-more info on this soon, but in theory, if you copy the `boxlang_modules` folder to your web app, or just the `rss` folder to your system module directory, you get will support for the following BIF function: `rss`
+Basic RSS parsing forBoxLang. This module adds one BIF, `rss`. 
 
-The `rss` function takes one argument, either a URL, or an array of URL.
+The `rss` function takes one argument, either a URL, or an array of URLs.
 
 ```js
 items = rss('https://www.raymondcamden.com/feed_slim.xml');
@@ -16,4 +15,8 @@ It returns an array of feed items consisting of the keys: `title`, `content`, `p
 
 ## Release History
 
-May 5, 2025: Moved the creation of the RSS object to the `init` method.
+| Date | Change |
+| ---- | ----- |
+| June 3, 2025 | Moved to new template structure for Forgebox support. |
+| May 5, 2025 | Moved the creation of the RSS object to the `init` method. |
+
